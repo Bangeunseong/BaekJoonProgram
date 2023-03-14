@@ -15,6 +15,10 @@ long Count(int len){
     return sum;
 }
 
+long Calculate(long first, long last){
+    
+}
+
 int main(){
     scanf("%d%d",&n,&k);
 
