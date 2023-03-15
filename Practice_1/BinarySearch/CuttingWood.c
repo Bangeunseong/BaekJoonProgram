@@ -5,27 +5,35 @@
 #pragma warning(disable:4996)
 #define SIZE 1000000
 
-long arr[SIZE]; int n, k;
+long long arr[SIZE]; long long n; long long k;
 
-long Count(int len){
-    long sum = 0;
+long long Count(long long len){
+    long long sum = 0;
     for(int i = 0; i < n; i++){
-        sum += arr[i] - len > 0 ? arr[i] - len : 0;
+        sum += (arr[i] - len > 0 ? arr[i] - len : 0);
     }
     return sum;
 }
 
-long Calculate(long first, long last){
-    
+long long Calculate(long long first, long long last){
+    while(first <= last){
+        long long len = (first + last)/2;
+        long long leftover = Count(len);
+        if(leftover < k) last = len - 1;
+        else first = len + 1;
+    }
+    return last;
 }
 
 int main(){
-    scanf("%d%d",&n,&k);
+    scanf("%lld%lld",&n,&k);
 
-    long maxLength = 0;
+    long long maxLength = 0;
     for(int i = 0; i < n; i++){
-        scanf("%ld", &arr[i]);
+        scanf("%lld", &arr[i]);
         if(i == 0) maxLength = arr[i];
-        else maxLength = maxLength < arr[i] ? arr[i] : maxLength;
+        else maxLength = (maxLength < arr[i] ? arr[i] : maxLength);
     }
+
+    printf("%lld",Calculate(0,maxLength));
 }
