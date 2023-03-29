@@ -1,4 +1,4 @@
-//Mathematics 2839
+//GreedyAlgorithm 2839
 
 #include <stdio.h>
 #include <stdlib.h>
